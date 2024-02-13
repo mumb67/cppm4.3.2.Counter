@@ -5,12 +5,14 @@
 #include <Windows.h>
 class Counter {
 public:
-    void setCounterNum(int enteredNum) {
-        this->counterNum = enteredNum;
+    Counter(int _enteredNum) {
+        this->counterNum = _enteredNum;
     }
+    
+    Counter(){}
 
     void addCounter() {
-        this->counterNum++;
+        counterNum++;
     }
 
     void disCounter() {
@@ -33,26 +35,18 @@ int main()
 
     int enteredNum;
     Counter counterObj;
-    
-    bool flag = false;
-    do {
-        std::string enteredText;
-        std::cout << "Вы хотите указать начальное значение счетчика? Введите да или нет: " << std::endl;
-        std::cin >> enteredText;
-        if (enteredText == "да") {
-            std::cout << "Введите начальное значение счетчика: " << std::endl;
-            std::cin >> enteredNum;
-            counterObj.setCounterNum(enteredNum);
-            flag = true;
-        } else if (enteredText == "нет") {
-            flag = true;
-        }
-        else {
-            std::cout << "Введенное слово не распознано, попробуйте еще раз " << std::endl;
-            flag = false;
-        }
-    } while (flag == false);
 
+    std::string enteredText;
+    std::cout << "Вы хотите указать начальное значение счетчика? Введите да или нет: " << std::endl;
+    std::cin >> enteredText;
+
+    if (enteredText == "да") {
+        std::cout << "Введите начальное значение счетчика: " << std::endl;
+        std::cin >> enteredNum;
+        counterObj = Counter(enteredNum);
+    }
+
+    bool flag = false;
     flag = false;
     do {
         char enteredChar = '0';
@@ -69,14 +63,3 @@ int main()
     } while (flag == false);
     std::cout << "До свидания!";
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
